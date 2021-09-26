@@ -45,7 +45,7 @@ export default function signin( {t}) {
     return (
         <React.Fragment>
             <Head>
-                <title>KidsLoop - SignIn</title>
+                <title>KidsLoop - {t.title}</title>
             </Head>
 
             <main className="signinPage">

@@ -53,7 +53,7 @@ export default function signup( {t} ) {
     return (
         <React.Fragment>
             <Head>
-                <title>KidsLoop - Sign Up</title>
+                <title>KidsLoop - {t.title}</title>
             </Head>
 
             <main className="signinPage">

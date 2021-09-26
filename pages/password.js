@@ -45,7 +45,7 @@ export default function recoverpassword( {t}) {
     return (
         <React.Fragment>
             <Head>
-                <title>KidsLoop - Recoover Password</title>
+                <title>KidsLoop - {t.title}</title>
             </Head>
 
             <main className="signinPage">
