@@ -4,6 +4,8 @@ import Link from "next/link";
 import Footer from "../components/Footer"
 import Loading from "../components/Loading";
 
+import validator from 'validator'
+
 import en from "../locales/en/signin.js";
 import kr from "../locales/kr/signin.js";
 
@@ -11,11 +13,18 @@ export default function signin( {t}) {
     const userIDRef = useRef();
     const passwordRef = useRef();
     const [error, setError] = useState("");
+    const [emailError, setEmailError] = useState("");
     const [loading, setLoading] = useState(false);
-
 
     async function handleSubmit(e) {
         e.preventDefault();
+
+        if (validator.isEmail(userIDRef.current.value)) {
+        setEmailError('')
+        } else {
+        setEmailError('Enter valid Email!')
+        return
+        }
 
         try {
             setError("");
@@ -47,6 +56,7 @@ export default function signin( {t}) {
                         <h1>{t.title}</h1>
 
                         {error && <div className="error">{error}</div>}
+                        {emailError && <div className="error">{emailError}</div>}
 
                         <input 
                             // className="inputField1"

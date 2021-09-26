@@ -4,6 +4,8 @@ import Link from "next/link";
 import Footer from "../components/Footer.js"
 import Loading from "../components/Loading";
 
+import validator from 'validator'
+
 import en from "../locales/en/signup.js";
 import kr from "../locales/kr/signup.js";
 
@@ -12,10 +14,18 @@ export default function signup( {t} ) {
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
     const [error, setError] = useState("");
+    const [emailError, setEmailError] = useState("");
     const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e) {
         e.preventDefault();
+
+         if (validator.isEmail(userIDRef.current.value)) {
+            setEmailError('')
+            } else {
+            setEmailError('Enter valid Email!')
+            return
+        }
 
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
         return setError("Passwords do not match");
@@ -51,6 +61,7 @@ export default function signup( {t} ) {
                         <h1>{t.title}</h1>
 
                         {error && <div className="error">{error}</div>}
+                        {emailError && <div className="error">{emailError}</div>}
 
                         <input
                             name="userID"
