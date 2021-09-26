@@ -5,8 +5,56 @@
 
 h1 {
   font-size: 36px;
+  font-weight: 500;
 }
 
 p {
   font-size: 11px;
 }
+  
+label {
+  font-size: 11px;
+  color: #17377b;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: #17377b;
+  font-size: 11px;
+
+
+}
+
+.error {
+  color: red;
+  font-style: italic;
+  max-width: 80vw;
+}
+
+input {
+  border: solid rgba(0, 0, 0, 0.25) 1px;
+  font-size: 11pt;
+  padding: 16px;
+  border-radius: 12px;
+  width: 100%;
+
+  &:focus{
+    outline: none;
+    border: solid rgba(0, 0, 0, 0.5) 1px;
+  }
+}
+
+.submitButton{
+    background: #3379ce;
+    border: 0px;
+    color: white;
+    font-size: 12pt;
+    padding: 10px 30px;
+    border-radius: 12px;
+    cursor: pointer;
+
+    &:hover{
+      background: rgb(12, 100, 177);
+    }
+  }

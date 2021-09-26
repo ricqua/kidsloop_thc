@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
-import Link from "next/link";
+// import Link from "next/link";
 
 import en from "../locales/en/signin.js";
 import kr from "../locales/kr/signin.js";
@@ -27,15 +27,15 @@ export default function signin( {t} ) {
                 <title>KidsLoop - SignIn</title>
             </Head>
 
-            <main>
-                <section>
+            <main className="signinPage">
+                <section className="signinPage__card">
                     <form>
-                        <img src="" alt="KidsLoop icon" width="80px" />
-        
-                        <h1>Sign In</h1>
+                        <img src="kidsloop_min_logo.svg" alt="KidsLoop icon" width="80px" />
+
+                        <h1>Sign in</h1>
 
                         <input 
-                            className="inputField1"
+                            // className="inputField1"
                             ref={userIDRef}
                             placeholder="Email or Phone *"
                             type="text"
@@ -43,7 +43,7 @@ export default function signin( {t} ) {
                         />
 
                         <input
-                            className="inputField1"
+                            // className="inputField1"
                             ref={passwordRef}
                             placeholder="Password *"
                             type="password"
@@ -51,18 +51,28 @@ export default function signin( {t} ) {
                         />
 
                         <div>
-                            <p
-                            className="label"
+                            <label
+                            className="signinPage__forgotPassword"
                             onClick={() => {
                                 alert("Function still in development");
                             }}
                             >
-                            Forgot Password?
-                            </p>
+                                Forgot your password?
+                            </label>
+
                             <button type="submit" className="submitButton">
-                            Sign In
+                                Sign In
                             </button>
                         </div>
+
+                        <label
+                        className="signinPage__createAccount"
+                        >
+                            <a href="/signup">
+                                    Create an account
+                            </a>
+                        </label>
+                    
 
                     </form>
                 </section>
