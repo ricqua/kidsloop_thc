@@ -1,6 +1,6 @@
 export default {
   title: "Sign Up",
-  email: "Email or Phone *",
+  email: "Email *",
   password1: "Password *",
   password2: "Password Confirmation *",
   button: "Sign up",

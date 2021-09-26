@@ -2,7 +2,7 @@
   "locales": ["en", "kr"],
   "defaultLocale": "en",
   "pages": {
-    "*": ["header", "footerContact"],
+    "*": ["footer"],
     "/signin": ["signin"],
     "/signup": ["signup"]
   }

@@ -55,7 +55,6 @@ export default function signin( {t}) {
 
                         <h1>{t.title}</h1>
 
-                        {error && <div className="error">{error}</div>}
                         {emailError && <div className="error">{emailError}</div>}
 
                         <input 
@@ -74,15 +73,17 @@ export default function signin( {t}) {
                             required
                         />
 
+                        {error && <div className="error">{error}</div>}
+
                         <div>
-                            <label
-                            className="signinPage__forgotPassword"
-                            onClick={() => {
-                                alert("Function still in development");
-                            }}
-                            >
-                               {t.forgotpw} 
-                            </label>
+                            <Link href="/password">
+                                <label
+                                className="signinPage__forgotPassword"
+                                >
+                                    {t.forgotpw} 
+                                </label>
+                            </Link>
+                        
 
                             {/* <Link href="/passwordrecovery">
                                 <label

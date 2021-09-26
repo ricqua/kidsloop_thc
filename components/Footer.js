@@ -1,39 +1,40 @@
 import React, { useState } from "react";
 import Popup from "./Popup";
 import { Icon, InlineIcon } from "@iconify/react";
-// import roundBrightness7 from "@iconify-icons/ic/round-brightness-7";
-
-import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-
-
+  
 export default function Footer() {
   const [popup, setPopup] = useState({ contentID: "", status: false });
   const router = useRouter();
-
-  const { t } = useTranslation();
 
   function handleClick(e) {
     setPopup({ contentID: e.target.id, status: true });
   }
 
-  const changeLanguage = (e) => {
+  function changeLanguage (e) {
     const locale = e.target.value;
     router.push(router, router, { locale });
   };
 
+
   return (
     <React.Fragment>
       <section className="footerComponent">
-        <div className="footerComponent__darkMode">
-          {/* <Icon
-            icon={roundBrightness7}
+
+          {true ? <Icon
+            className="footerComponent__darkMode"
+            icon="ic:round-brightness-3"
             width="20px"
             alt="Toggle dark mode"
             color="#444"
-          /> */}
-          <span className="footerComponent__darkModeToolTipText">L/D</span>
-        </div>
+          /> :
+          <Icon
+            className="footerComponent__darkMode"
+            icon="ic:round-brightness-7"
+            width="20px"
+            alt="Toggle dark mode"
+            color="#444"
+          />}
 
         <select
           onChange={changeLanguage}
@@ -67,3 +68,4 @@ export default function Footer() {
     </React.Fragment>
   );
 }
+

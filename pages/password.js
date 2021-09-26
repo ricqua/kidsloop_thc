@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "../components/Footer.js"
+import Footer from "../components/Footer"
 import Loading from "../components/Loading";
 
 import validator from 'validator'
 
-import en from "../locales/en/signup.js";
-import kr from "../locales/kr/signup.js";
+import en from "../locales/en/recoverPassword.js";
+import kr from "../locales/kr/recoverPassword.js";
 
-export default function signup( {t} ) {
-    const userIDRef = useRef(); //{current: 0}
+export default function recoverpassword( {t}) {
+    const userIDRef = useRef();
     const passwordRef = useRef();
-    const passwordConfirmRef = useRef();
     const [error, setError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [loading, setLoading] = useState(false);
@@ -20,31 +19,24 @@ export default function signup( {t} ) {
     async function handleSubmit(e) {
         e.preventDefault();
 
-         if (validator.isEmail(userIDRef.current.value)) {
-            setEmailError('')
-            } else {
-            setEmailError('Enter valid Email!')
-            return
-        }
-
-        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-        return setError("Passwords do not match");
-        }
-
-         if (passwordRef.current.value.length < 6) {
-        return setError("Passwords is too short.  Please set a password at least 6 characters long.");
+        if (validator.isEmail(userIDRef.current.value)) {
+        setEmailError('')
+        } else {
+        setEmailError('Enter valid Email!')
+        return
         }
 
         try {
-          setError("");
-          setLoading(true);
-          await signup(userIDRef.current.value, passwordRef.current.value);
-        } catch {
-          setError(
-            "* Failed to create an account.  No connection to working authenticator service"
-          );
+            setError("");
+            setLoading(true);
+            await signin(userIDRef.current.value, passwordRef.current.value);
+            // history.push("/");
+            } catch {
+            setError(
+                "* Failed to recover password.  Email does not exsist or connection to server failed."
+            );
         }
-        
+
         setTimeout(() => {
         setLoading(false);
         }, 1500);
@@ -53,7 +45,7 @@ export default function signup( {t} ) {
     return (
         <React.Fragment>
             <Head>
-                <title>KidsLoop - Sign Up</title>
+                <title>KidsLoop - Recoover Password</title>
             </Head>
 
             <main className="signinPage">
@@ -65,25 +57,11 @@ export default function signup( {t} ) {
 
                         {emailError && <div className="error">{emailError}</div>}
 
-                        <input
-                            name="userID"
+                        <input 
+                            // className="inputField1"
                             ref={userIDRef}
                             placeholder={t.email}
                             type="email"
-                            required
-                        />
-                        <input
-                            name="password"
-                            ref={passwordRef}
-                            placeholder={t.password1}
-                            type="password"
-                            required
-                        />
-                        <input
-                            name="password-confirm"
-                            ref={passwordConfirmRef}
-                            placeholder={t.password2}
-                            type="password"
                             required
                         />
 
@@ -93,25 +71,25 @@ export default function signup( {t} ) {
                             <button type="submit" className="submitButton">
                                 {t.button}
                             </button>
+                        {loading ? <Loading /> : ""}
+
                         </div>
 
-                       <Link href="/signin">
+                        <Link href="/signup">
                             <label
                             className="signinPage__createAccount"
                             >
                                 {t.signin}
                             </label>
                         </Link>
-                        {loading ? <Loading /> : ""}
-                        
+
                     </form>
                 </section>
-                    <Footer/>
+                <Footer/>
             </main>
         </React.Fragment>
     )
 }
-
 
 export async function getStaticProps({ locale }) {
   const t =

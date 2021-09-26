@@ -23,6 +23,9 @@
       align-items: center;
       justify-content: space-between;
     }
+    button {
+      margin-left: auto;
+    }
   }
 
   &__forgotPassword, &__createAccount{

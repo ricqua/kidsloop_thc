@@ -21,7 +21,7 @@ export default function Popup(props) {
             repudiandae.
           </p>
           <button className="popup__closeButton" onClick={() => props.setTrigger(false)}>
-            Close
+            Close 
           </button>
         </div>
       </div>
