@@ -11,8 +11,9 @@ export default function index() {
         <title>KidsLoop - Home</title>
       </Head>
         <section className="home">
-          <h1>Kids Loop Home page</h1>
+          <h1>Kids Loop - Take Home Challenge</h1>
           <br />
+          
           <p>Richard Quantrill</p>
           <p>
             <a href="mailto:ricqua@gmail.com"> ricqua@gmail.com</a>
@@ -28,7 +29,11 @@ export default function index() {
           </p>
           <br />
 
-          <Link href="/signin"> Go to Sign in page </Link>
+          <Link href="/signin"> 
+            <button className="submitButton">
+              Go to Sign in page 
+            </button> 
+          </Link>
           
         </section>
     </React.Fragment>

@@ -20,27 +20,28 @@ export default function signin( {t}) {
         e.preventDefault();
 
         if (validator.isEmail(userIDRef.current.value)) {
-        setEmailError('')
+            setEmailError('')
         } else {
-        setEmailError('Enter valid Email!')
-        return
+            setEmailError('Enter valid Email!')
+            return
         }
+    
 
         try {
             setError("");
-            setLoading(true);
-            await signin(userIDRef.current.value, passwordRef.current.value);
-            // history.push("/");
+                setLoading(true);
+                await signin(userIDRef.current.value, passwordRef.current.value);
             } catch {
-            setError(
-                "* Failed to sign in.  Please ensure your sign in credentials are correct."
-            );
+                setError(
+                    "* Failed to sign in.  Please ensure your sign in credentials are correct."
+                );
         }
 
         setTimeout(() => {
         setLoading(false);
         }, 1500);
     }
+    
 
     return (
         <React.Fragment>
