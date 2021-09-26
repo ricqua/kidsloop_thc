@@ -1,0 +1,9 @@
+{
+  "locales": ["en", "kr"],
+  "defaultLocale": "en",
+  "pages": {
+    "*": ["header", "footerContact"],
+    "/signin": ["signin"],
+    "/signup": ["signup"]
+  }
+}
